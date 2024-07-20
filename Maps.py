@@ -53,7 +53,6 @@ class RoadDataset(tf.keras.utils.Sequence):
                 mask = np.array(mask)
                 mask = (mask > 128).astype(np.float32)
 
-            # Crop patches from large image
             for j in range(self.batch_size):
                 x_start = np.random.randint(0, 1024 - self.patch_size)
                 y_start = np.random.randint(0, 1024 - self.patch_size)
@@ -135,7 +134,6 @@ def visualize_predictions(model, dataset, num_images=4):
         plt.title('Prediction')
         plt.imshow(prediction, cmap='gray')
         plt.show()
-
 train_dir = '/Users/amruthapullagummi/Downloads/train'
 valid_dir = '/Users/amruthapullagummi/Downloads/valid'
 test_dir = '/Users/amruthapullagummi/Downloads/test'
@@ -144,7 +142,7 @@ train_dataset = RoadDataset(train_dir, has_masks=True, batch_size=2, patch_size=
 valid_dataset = RoadDataset(valid_dir, has_masks=False, batch_size=2, patch_size=256)
 test_dataset = RoadDataset(test_dir, has_masks=False, batch_size=2, patch_size=256)
 
-input_shape = (256, 256, 3)  # Updated input shape to 256x256
+input_shape = (256, 256, 3)  
 model = create_unet(input_shape)
 
 print("Training the model...")
