@@ -118,7 +118,7 @@ def train_model(model, train_dataset, valid_dataset, epochs=5):
 
     time_callback = LambdaCallback(on_epoch_begin=on_epoch_begin, on_epoch_end=on_epoch_end)
 
-    model.compile(optimizer=Adam(learning_rate=0.001), loss='binary_crossentropy', metrics=['accuracy'])  # Placeholder loss
+    model.compile(optimizer=Adam(learning_rate=0.0001), loss='binary_crossentropy', metrics=['accuracy'])  # Placeholder loss
     model.fit(train_dataset, validation_data=valid_dataset, epochs=epochs, callbacks=[time_callback, ReduceLROnPlateau(), EarlyStopping(patience=2)])
 
 def visualize_predictions(model, dataset, num_images=4):
@@ -155,4 +155,4 @@ visualize_predictions(model, valid_dataset, num_images=4)
 print("Test Predictions:")
 visualize_predictions(model, test_dataset, num_images=4)
 
-model.save('/path/to/road_segmentation_model.h5')
+model.save('/Users/amruthapullagummi/Downloads/road_segmentation_model.h5')
