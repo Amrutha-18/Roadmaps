@@ -13,7 +13,7 @@ policy = Policy('mixed_float16')
 set_global_policy(policy)
 
 class RoadDataset(tf.keras.utils.Sequence):
-    def __init__(self, root_dir, batch_size=2, patch_size=256, has_masks=True, shuffle=True, augment=False):
+    def __init__(self, root_dir, batch_size=2, patch_size=256, has_masks=True, shuffle= False, augment=False):
         self.root_dir = root_dir
         self.batch_size = batch_size
         self.patch_size = patch_size
